@@ -6,7 +6,11 @@ using System.Linq;
 
 namespace DynamicModel
 {
-    public class NotificationModel<T> : DynamicObject, INotifyPropertyChanged, IDataErrorInfo
+    /// <summary>
+    /// Wraps an object and provides Dynamic property access.
+    /// </summary>
+    /// <typeparam name="T">The type of object being wrapped</typeparam>
+    public class NotificationModel<T> : DynamicObject, INotifyPropertyChanged, IDataErrorInfo where T : class
     {
         private Dictionary<string, object> publicValues;
 
@@ -14,6 +18,11 @@ namespace DynamicModel
 
         public NotificationModel(T model)
         {
+            if (model == null)
+            {
+                throw new ArgumentNullException("model");
+            }
+
             Model = model;
 
             publicValues =
@@ -27,6 +36,8 @@ namespace DynamicModel
 
         public string Validate(string propertyName, object value, out object actualValue)
         {
+            VerifyPropertyName(propertyName);
+
             var destinationType = typeof(T).GetProperty(propertyName).PropertyType;
             var sourceType = value == null ? typeof(string) : value.GetType();
 
@@ -61,10 +72,26 @@ namespace DynamicModel
             PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
 
+        private void VerifyPropertyName(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException("name");
+            }
+
+            if (!publicValues.ContainsKey(name))
+            {
+                throw new ArgumentOutOfRangeException("name", string.Format("Model does not contain property '{0}'", name));
+            }
+
+        }
+
         #region DynamicObject Overrides
 
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {
+            VerifyPropertyName(binder.Name);
+
             result = publicValues[binder.Name];
 
             return true;
@@ -72,6 +99,8 @@ namespace DynamicModel
 
         public override bool TrySetMember(SetMemberBinder binder, object value)
         {
+            VerifyPropertyName(binder.Name);
+
             publicValues[binder.Name] = value;
 
             RaisePropertyChanged(binder.Name);
@@ -98,6 +127,8 @@ namespace DynamicModel
         {
             get
             {
+                VerifyPropertyName(columnName);
+
                 object actualValue = null;
 
                 var result = Validate(columnName, publicValues[columnName], out actualValue);

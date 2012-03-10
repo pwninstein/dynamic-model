@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicModel", "DynamicMode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicModel.Example", "DynamicModel.Example\DynamicModel.Example.csproj", "{F1D58AE8-FBF1-421D-A1E9-55F3105965B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicModel.Test", "DynamicModel.Test\DynamicModel.Test.csproj", "{FEAD769B-2FDD-42FB-B02C-7DE3A02C801E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,16 @@ Global
 		{F1D58AE8-FBF1-421D-A1E9-55F3105965B0}.Release|Mixed Platforms.Build.0 = Release|x86
 		{F1D58AE8-FBF1-421D-A1E9-55F3105965B0}.Release|x86.ActiveCfg = Release|x86
 		{F1D58AE8-FBF1-421D-A1E9-55F3105965B0}.Release|x86.Build.0 = Release|x86
+		{FEAD769B-2FDD-42FB-B02C-7DE3A02C801E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEAD769B-2FDD-42FB-B02C-7DE3A02C801E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEAD769B-2FDD-42FB-B02C-7DE3A02C801E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{FEAD769B-2FDD-42FB-B02C-7DE3A02C801E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{FEAD769B-2FDD-42FB-B02C-7DE3A02C801E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FEAD769B-2FDD-42FB-B02C-7DE3A02C801E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEAD769B-2FDD-42FB-B02C-7DE3A02C801E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEAD769B-2FDD-42FB-B02C-7DE3A02C801E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{FEAD769B-2FDD-42FB-B02C-7DE3A02C801E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{FEAD769B-2FDD-42FB-B02C-7DE3A02C801E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
