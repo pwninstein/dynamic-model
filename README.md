@@ -20,7 +20,7 @@ We can wrap it in a NotificationModel object and expose it in a ViewModel:
         {
             return model ?? (model = new NotificationModel<Person>(new Person { Name = "Ted", Age = 25, BirthDate = new DateTime(1980, 12, 1) }));
         }
-   }
+    }
 
 And then bind to it in a WPF view:
 
