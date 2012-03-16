@@ -34,14 +34,6 @@ namespace DynamicModel.Test
         }
 
         [TestMethod]
-        public void NotificationModelConstructorTest()
-        {
-            var notificationModel = new NotificationModel<TestModel>(testModel);
-
-            Assert.AreEqual(testModel, notificationModel.Model);
-        }
-
-        [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void NotificationModelConstructorNullTest()
         {
@@ -68,7 +60,9 @@ namespace DynamicModel.Test
         public void ByteAssignmentTest()
         {
             dynamicModel.Byte = (byte)1;
+
             Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.ByteProperty]));
+
             Assert.AreEqual(testModel.Byte, (byte)1);
         }
 
@@ -76,136 +70,170 @@ namespace DynamicModel.Test
         public void ByteStringAssignmentTest()
         {
             dynamicModel.Byte = "1";
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.ByteProperty]));
+
             Assert.AreEqual(testModel.Byte, (byte)1);
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.ByteProperty]));
         }
 
         [TestMethod]
         public void ShortAssignmentTest()
         {
             dynamicModel.Short = (short)2;
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.ShortProperty]));
+
             Assert.AreEqual(testModel.Short, (short)2);
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.ShortProperty]));
         }
 
         [TestMethod]
         public void ShortStringAssignmentTest()
         {
             dynamicModel.Short = "2";
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.ShortProperty]));
+
             Assert.AreEqual(testModel.Short, (short)2);
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.ShortProperty]));
         }
 
         [TestMethod]
         public void LongAssignmentTest()
         {
             dynamicModel.Long = (long)3;
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.LongProperty]));
+
             Assert.AreEqual(testModel.Long, (long)3);
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.LongProperty]));
         }
 
         [TestMethod]
         public void LongStringAssignmentTest()
         {
             dynamicModel.Long = "3";
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.LongProperty]));
+
             Assert.AreEqual(testModel.Long, (long)3);
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.LongProperty]));
         }
 
         [TestMethod]
         public void IntAssignmentTest()
         {
             dynamicModel.Int = 4;
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.IntProperty]));
+
             Assert.AreEqual(testModel.Int, (int)4);
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.IntProperty]));
         }
 
         [TestMethod]
         public void IntStringAssignmentTest()
         {
             dynamicModel.Int = "4";
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.IntProperty]));
+
             Assert.AreEqual(testModel.Int, (int)4);
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.IntProperty]));
         }
 
         [TestMethod]
         public void DoubleAssignmentTest()
         {
             dynamicModel.Double = 5D;
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.DoubleProperty]));
+
             Assert.AreEqual(testModel.Double, (double)5);
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.DoubleProperty]));
         }
 
         [TestMethod]
         public void DoubleStringAssignmentTest()
         {
             dynamicModel.Double = "5";
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.DoubleProperty]));
+
             Assert.AreEqual(testModel.Double, (double)5);
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.DoubleProperty]));
         }
 
         [TestMethod]
         public void FloatAssignmentTest()
         {
             dynamicModel.Float = 6F;
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.FloatProperty]));
+
             Assert.AreEqual(testModel.Float, (float)6);
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.FloatProperty]));
         }
 
         [TestMethod]
         public void FloatStringAssignmentTest()
         {
             dynamicModel.Float = "6";
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.FloatProperty]));
+
             Assert.AreEqual(testModel.Float, (float)6);
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.FloatProperty]));
         }
 
         [TestMethod]
         public void DecimalAssignmentTest()
         {
             dynamicModel.Decimal = 7M;
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.DecimalProperty]));
+
             Assert.AreEqual(testModel.Decimal, (decimal)7);
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.DecimalProperty]));
         }
 
         [TestMethod]
         public void DecimalStringAssignmentTest()
         {
             dynamicModel.Decimal = "7";
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.DecimalProperty]));
+
             Assert.AreEqual(testModel.Decimal, (decimal)7);
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.DecimalProperty]));
         }
 
         [TestMethod]
         public void BoolAssignmentTest()
         {
             dynamicModel.Bool = true;
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.BoolProperty]));
+
             Assert.AreEqual(testModel.Bool, true);
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.BoolProperty]));
         }
 
         [TestMethod]
         public void BooleanStringAssignmentTest()
         {
             dynamicModel.Bool = "true";
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.BoolProperty]));
+
             Assert.AreEqual(testModel.Bool, true);
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.BoolProperty]));
         }
 
         [TestMethod]
         public void CharAssignmentTest()
         {
             dynamicModel.Char = 'x';
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.CharProperty]));
+
             Assert.AreEqual(testModel.Char, 'x');
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.CharProperty]));
         }
 
         [TestMethod]
         public void StringAssignmentTest()
         {
             dynamicModel.String = "LOL";
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.StringProperty]));
+
             Assert.AreEqual(testModel.String, "LOL");
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.StringProperty]));
         }
 
         [TestMethod]
@@ -214,8 +242,10 @@ namespace DynamicModel.Test
             var now = DateTime.Now;
 
             dynamicModel.DateTime = now;
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.DateTimeProperty]));
+
             Assert.AreEqual(testModel.DateTime, now);
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.DateTimeProperty]));
         }
 
         [TestMethod]
@@ -224,8 +254,10 @@ namespace DynamicModel.Test
             var now = DateTime.Now;
 
             dynamicModel.DateTime = now.ToString("O");
-            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.DateTimeProperty]));
+
             Assert.AreEqual(testModel.DateTime, now);
+
+            Assert.IsTrue(string.IsNullOrEmpty(notificationModel[TestModel.DateTimeProperty]));
         }
 
         [TestMethod]
@@ -268,7 +300,7 @@ namespace DynamicModel.Test
         [TestMethod]
         public void ModelTest()
         {
-            Assert.Inconclusive("Not implemented");
+            Assert.AreEqual(testModel, notificationModel.Model);
         }
     }
 }

@@ -14,6 +14,8 @@ namespace DynamicModel
     {
         private Dictionary<string, object> publicValues;
 
+        private Dictionary<string, string> errors;
+
         public T Model { get; private set; }
 
         public NotificationModel(T model)
@@ -25,13 +27,11 @@ namespace DynamicModel
 
             Model = model;
 
-            publicValues =
-                Model
-                .GetType()
-                .GetProperties()
-                .ToList()
-                .ToDictionary(p => p.Name, p => p.GetValue(Model, null));
+            var properties = Model.GetType().GetProperties();
 
+            publicValues = properties.ToDictionary(p => p.Name, p => p.GetValue(Model, null));
+
+            errors = properties.Select(p => new { p.Name, Value = string.Empty }).ToDictionary(p => p.Name, p => p.Value);
         }
 
         public string Validate(string propertyName, object value, out object actualValue)
@@ -64,6 +64,31 @@ namespace DynamicModel
             {
                 actualValue = null;
                 return "Cannot convert to " + destinationType.Name;
+            }
+        }
+
+        private void SetModelPropertyAndError(string property)
+        {
+            try
+            {
+                object actualValue = null;
+
+                var result = Validate(property, publicValues[property], out actualValue);
+
+                if (string.IsNullOrEmpty(result))
+                {
+                    typeof(T).GetProperty(property).SetValue(Model, actualValue, null);
+
+                    errors[property] = string.Empty;
+                }
+                else
+                {
+                    errors[property] = result;
+                }
+            }
+            catch (Exception ex)
+            {
+                errors[property] = ex.Message;
             }
         }
 
@@ -103,6 +128,8 @@ namespace DynamicModel
 
             publicValues[binder.Name] = value;
 
+            SetModelPropertyAndError(binder.Name);
+
             RaisePropertyChanged(binder.Name);
 
             return true;
@@ -129,18 +156,7 @@ namespace DynamicModel
             {
                 VerifyPropertyName(columnName);
 
-                object actualValue = null;
-
-                var result = Validate(columnName, publicValues[columnName], out actualValue);
-
-                if (result != null)
-                {
-                    return result;
-                }
-
-                typeof(T).GetProperty(columnName).SetValue(Model, actualValue, null);
-
-                return null;
+                return errors[columnName];
             }
         }
 
